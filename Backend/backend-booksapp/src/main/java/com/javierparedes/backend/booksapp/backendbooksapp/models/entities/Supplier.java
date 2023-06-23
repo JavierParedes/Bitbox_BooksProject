@@ -1,33 +1,44 @@
 package com.javierparedes.backend.booksapp.backendbooksapp.models.entities;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "supliers")
-public class Supplier {
+@Table(name = "suppliers")
+public class Supplier implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
-
+    @Column(name="name")
     private String name;
-
-    private String surname;
-
+    @Column(name="address")
     private String address;
 
-    private Long itemCode;
+    @OneToMany(mappedBy="supplier")
+    private List<Book> books;
 
-    public Supplier(Long id, String name, String surname, String address, Long itemCode) {
+
+    public Supplier(Long id, String name, String surname, String address, List<Book> books) {
         this.id = id;
         this.name = name;
-        this.surname = surname;
         this.address = address;
-        this.itemCode = itemCode;
+        this.books = books;
+    }
+
+    public Supplier() {
+        
     }
 
     public Long getId() {
@@ -46,14 +57,6 @@ public class Supplier {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -62,12 +65,13 @@ public class Supplier {
         this.address = address;
     }
 
-    public Long getItemCode() {
-        return itemCode;
+    public List<Book> getBooks() {
+        return books;
     }
 
-    public void setItemCode(Long itemCode) {
-        this.itemCode = itemCode;
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
+
 
 }

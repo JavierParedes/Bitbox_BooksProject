@@ -1,57 +1,62 @@
 package com.javierparedes.backend.booksapp.backendbooksapp.models.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.javierparedes.backend.booksapp.backendbooksapp.enums.StateEnum;
 
 @Entity
 @Table(name = "books")
-public class Book {
+public class Book implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
-
+    @Column(name="name")
     private String name;
-
+    @Column(name="itemcode")
     private Long itemCode;
-
+    @Column(name="description")
     private String description;
-
+    @Column(name="author")
+    private String author;
+    @Column(name="gender")
+    private String gender;
+    @Column(name="price")
     private Long price;
-
-    private List<PriceReduction> priceReduction;
+    
+    @OneToMany(mappedBy="books")
+    private List<Book> books;
 
     @Enumerated(EnumType.STRING)
+    @Column(name="state")
     private StateEnum state;
 
-    private List<Supplier> suppliers;
+    @ManyToOne
+    private Supplier supplier;
 
+    @Column(name="creationdate")
     private Date creationDate;
 
+    @ManyToOne
     private User creatorUser;
 
-    public Book(Long id, String name, Long itemCode, String description, Long price,
-            List<PriceReduction> priceReduction, StateEnum state, List<Supplier> suppliers, Date creationDate,
-            User creatorUser) {
-        this.id = id;
-        this.name = name;
-        this.itemCode = itemCode;
-        this.description = description;
-        this.price = price;
-        this.priceReduction = priceReduction;
-        this.state = state;
-        this.suppliers = suppliers;
-        this.creationDate = creationDate;
-        this.creatorUser = creatorUser;
+    public Book() {
+       
     }
 
     public Long getId() {
@@ -118,6 +123,30 @@ public class Book {
         this.creatorUser = creatorUser;
     }
 
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public List<PriceReduction> getPriceReduction() {
         return priceReduction;
     }
@@ -125,13 +154,4 @@ public class Book {
     public void setPriceReduction(List<PriceReduction> priceReduction) {
         this.priceReduction = priceReduction;
     }
-
-    public List<Supplier> getSuppliers() {
-        return suppliers;
-    }
-
-    public void setSuppliers(List<Supplier> suppliers) {
-        this.suppliers = suppliers;
-    }
-
 }

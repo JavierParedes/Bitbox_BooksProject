@@ -1,48 +1,65 @@
 package com.javierparedes.backend.booksapp.backendbooksapp.models.entities;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.javierparedes.backend.booksapp.backendbooksapp.enums.RolEnum;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
-
+    @Column(name="name")
     private String name;
-
+    @Column(name="surname")
     private String surname;
-
+    @Column(name="alias")
+    private String alias;
+    @Column(name="password")
     private String password;
-
+    @Column(name="email")
     private String email;
-
+    @Column(name="address")
     private String address;
-
+    
+    @OneToMany(mappedBy="creatorUser")
+    private List<Book> books;
+  
     @Enumerated(EnumType.STRING)
+    @Column(name="rol")
     private RolEnum rol;
 
-    private String token;
+    
 
-    public User(Long id, String name, String surname, String password, String email, String address, RolEnum rol,
-            String token) {
+    public User(Long id, String name, String surname, String alias, String password, String email, String address,
+            List<Book> books_id, RolEnum rol) {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.alias = alias;
         this.password = password;
         this.email = email;
         this.address = address;
+        this.books_id = books_id;
         this.rol = rol;
-        this.token = token;
+    }
+
+    public User() {
+    
     }
 
     public Long getId() {
@@ -93,14 +110,6 @@ public class User {
         this.address = address;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public RolEnum getRol() {
         return rol;
     }
@@ -109,4 +118,22 @@ public class User {
         this.rol = rol;
     }
 
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public List<Book> getBooks() {
+        return books_id;
+    }
+
+    public void setBooks(List<Book> books_id) {
+        this.books_id= books_id;
+    }
+
+    
 }
