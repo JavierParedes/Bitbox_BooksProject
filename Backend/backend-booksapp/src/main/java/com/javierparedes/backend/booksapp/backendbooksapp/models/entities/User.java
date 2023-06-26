@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javierparedes.backend.booksapp.backendbooksapp.enums.RolEnum;
 
 @Entity
@@ -25,17 +26,18 @@ public class User implements Serializable {
     private Long id;
     @Column(name="name")
     private String name;
-    @Column(name="surname")
+    @Column(name="surname", unique = true)
     private String surname;
     @Column(name="alias")
     private String alias;
     @Column(name="password")
     private String password;
-    @Column(name="email")
+    @Column(name="email",unique = true)
     private String email;
     @Column(name="address")
     private String address;
     
+    @JsonIgnore
     @OneToMany(mappedBy="creatorUser")
     private List<Book> books;
   
@@ -45,8 +47,9 @@ public class User implements Serializable {
 
     
 
+
     public User(Long id, String name, String surname, String alias, String password, String email, String address,
-            List<Book> books_id, RolEnum rol) {
+            List<Book> books, RolEnum rol) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -54,7 +57,7 @@ public class User implements Serializable {
         this.password = password;
         this.email = email;
         this.address = address;
-        this.books_id = books_id;
+        this.books = books;
         this.rol = rol;
     }
 
@@ -128,11 +131,11 @@ public class User implements Serializable {
     }
 
     public List<Book> getBooks() {
-        return books_id;
+        return books;
     }
 
-    public void setBooks(List<Book> books_id) {
-        this.books_id= books_id;
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     

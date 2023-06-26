@@ -1,3 +1,5 @@
+
+/*
 DROP TABLE IF EXISTS USERS;
 CREATE TABLE USERS (
     id LONG AUTO_INCREMENT PRIMARY KEY,
@@ -6,8 +8,8 @@ CREATE TABLE USERS (
     alias VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    address VARCHAR(50) NOT NULL,
-    books LONG NOT NULL,
+    address VARCHAR(50),
+    books LONG,
     rol VARCHAR(50) NOT NULL,
     FOREIGN KEY (creatoruser) REFERENCES BOOKS(creatoruser)
 );
@@ -47,3 +49,5 @@ CREATE TABLE BOOKS (
     creatoruser LONG NOT NULL,
     FOREIGN KEY (books) REFERENCES BOOKS(pricereduction)
 );
+
+*/

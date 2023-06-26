@@ -3,7 +3,6 @@ package com.javierparedes.backend.booksapp.backendbooksapp.models.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,7 +10,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -28,7 +26,7 @@ public class Book implements Serializable {
     private Long id;
     @Column(name="name")
     private String name;
-    @Column(name="itemcode")
+    @Column(name="itemcode", unique = true)
     private Long itemCode;
     @Column(name="description")
     private String description;
@@ -39,8 +37,8 @@ public class Book implements Serializable {
     @Column(name="price")
     private Long price;
     
-    @OneToMany(mappedBy="books")
-    private List<Book> books;
+    @OneToMany(mappedBy="priceReductionBooks")
+    private List<PriceReduction> priceReductionBooks;
 
     @Enumerated(EnumType.STRING)
     @Column(name="state")
@@ -58,6 +56,27 @@ public class Book implements Serializable {
     public Book() {
        
     }
+
+    
+
+    public Book(Long id, String name, Long itemCode, String description, String author, String gender, Long price,
+            List<PriceReduction> priceReductionBooks, StateEnum state, Supplier supplier, Date creationDate,
+            User creatorUser) {
+        this.id = id;
+        this.name = name;
+        this.itemCode = itemCode;
+        this.description = description;
+        this.author = author;
+        this.gender = gender;
+        this.price = price;
+        this.priceReductionBooks = priceReductionBooks;
+        this.state = state;
+        this.supplier = supplier;
+        this.creationDate = creationDate;
+        this.creatorUser = creatorUser;
+    }
+
+
 
     public Long getId() {
         return id;
@@ -147,11 +166,19 @@ public class Book implements Serializable {
         this.gender = gender;
     }
 
-    public List<PriceReduction> getPriceReduction() {
-        return priceReduction;
+
+
+    public List<PriceReduction> getPriceReductionBooks() {
+        return priceReductionBooks;
     }
 
-    public void setPriceReduction(List<PriceReduction> priceReduction) {
-        this.priceReduction = priceReduction;
+
+
+    public void setPriceReductionBooks(List<PriceReduction> priceReductionBooks) {
+        this.priceReductionBooks = priceReductionBooks;
     }
+
+    
+
+    
 }

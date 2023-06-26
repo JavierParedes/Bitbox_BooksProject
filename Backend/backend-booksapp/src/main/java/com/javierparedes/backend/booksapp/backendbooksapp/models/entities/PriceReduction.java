@@ -2,7 +2,6 @@ package com.javierparedes.backend.booksapp.backendbooksapp.models.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -28,15 +29,20 @@ public class PriceReduction implements Serializable {
     @Column(name="enddate")
     private Date endDate;
 
+    @JsonIgnore
     @ManyToOne
-    private Book books;
+    private Book priceReductionBooks;
 
-    public PriceReduction(Long id, Long priceReduction, Date startDate, Date endDate, Book books) {
+    public PriceReduction(Long id, Long priceReduction, Date startDate, Date endDate, Book priceReductionBooks) {
         this.id = id;
         this.priceReduction = priceReduction;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.books = books;
+        this.priceReductionBooks = priceReductionBooks;
+    }
+
+    public PriceReduction(){
+
     }
 
     public Long getId() {
@@ -71,11 +77,12 @@ public class PriceReduction implements Serializable {
         this.endDate = endDate;
     }
 
-    public Book getBooks() {
-        return books;
+    public Book getPriceReductionBooks() {
+        return priceReductionBooks;
     }
 
-    public void setBooks(Book books) {
-        this.books = books;
+    public void setPriceReductionBooks(Book priceReductionBooks) {
+        this.priceReductionBooks = priceReductionBooks;
     }
+
 }
