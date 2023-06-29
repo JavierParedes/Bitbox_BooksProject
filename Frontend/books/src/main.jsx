@@ -1,10 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {BooksApp} from './BooksApp.jsx'
+import { BooksApp } from './BooksApp'
 import './styles.css'
+import { BrowserRouter } from 'react-router-dom'
+import { AuthProvider } from './auth/context/AuthProvider'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BooksApp />
+    <BrowserRouter>
+      <AuthProvider>
+          <BooksApp />
+      </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 )
