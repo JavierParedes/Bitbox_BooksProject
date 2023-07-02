@@ -10,14 +10,14 @@ export const UsersList = ({}) => {
             <table className="table table-hover table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Alias</th>
-                        <th>Email</th>
-                        <th>Dirección</th>
-                        <th>Rol</th>
-                        <th>Modificar</th>
-                        <th>Eliminar</th>
+                        <th>name</th>
+                        <th>surname</th>
+                        <th>alias</th>
+                        <th>email</th>
+                        <th>address</th>
+                        <th>rol</th>
+                        <th>update</th>
+                        <th>remove</th>
                     </tr>
                 </thead>
                 <tbody>

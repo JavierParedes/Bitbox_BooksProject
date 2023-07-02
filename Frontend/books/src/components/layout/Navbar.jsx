@@ -24,7 +24,7 @@ export const Navbar = ({ }) => {
             </div>
 
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavLogout">
-                <span className="nav-item nav-ling text-primary mx-3"> login.user?.alias </span>
+                <span className="nav-item nav-ling text-primary mx-3"> {login.user?.alias} </span>
                 <button 
                 className="btn btn-outline-success"
                 onClick={handlerLogout}>

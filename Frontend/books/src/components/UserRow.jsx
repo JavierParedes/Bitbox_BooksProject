@@ -21,13 +21,13 @@ export const UserRow = ({id, name, surname, alias, email, address, rol}) => {
                                         address,
                                         rol,
                                     })}>
-                                        Modificar
+                                        Update
                                     </button>
                                 </td>
                                 <td>
                                     <button type="button" className="btn btn-danger btn-sm"
                                     onClick={() =>  handlerRemoveUser(id)}>
-                                        Eliminar
+                                        Remove
                                     </button>
                                 </td>
 

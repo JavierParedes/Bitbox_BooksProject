@@ -16,6 +16,7 @@ export const useAuth = () => {
     const handlerLogin = ({ alias, password }) => {
     const isLogin = loginUser({alias, password});
         if (isLogin) {
+            const user = { username: 'admin' }
             dispatch({
                 type: 'login',
                 payload: user,

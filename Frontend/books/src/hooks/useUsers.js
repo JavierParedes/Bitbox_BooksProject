@@ -6,8 +6,8 @@ import { findAll, remove, save } from "../services/userServices";
 
 const initialUsers = [];
 
-const initialUserform = {
-    id:0,
+const initialUserForm = {
+    id: 0,
     name:'',
     surname:'',
     alias:'',
@@ -19,8 +19,8 @@ const initialUserform = {
 
 export const useUsers = () => {
 
-    const [users, dispatch] = useReducer (usersReducer, initialUserform);
-    const [userSelected, setUserSelected ] = useState(initialUserform);
+    const [users, dispatch] = useReducer (usersReducer, initialUsers);
+    const [userSelected, setUserSelected ] = useState(initialUserForm);
     const [visibleForm, setVisibleForm] = useState(false);
     const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ export const useUsers = () => {
     }
 
     const handlerAddUser = async (user) => {
-
+        console.log(user);
         let response;
 
         if(user.id ===0){
@@ -56,8 +56,9 @@ export const useUsers = () => {
             'El usuario ha sido creado con exito' :
             'El usuario ha sido actualizado con exito',
             'Success'
-        ); handlerCloseForm();
-        navigate('users');
+        ); 
+        handlerCloseForm();
+        navigate('/users');
     }
 
     const handlerRemoveUser = (id) => {
@@ -93,17 +94,17 @@ export const useUsers = () => {
     }
     
     const handlerOpenForm = () => {
-        setVisibleForm(true)
+        setVisibleForm(true);
     }
 
     const handlerCloseForm = () => {
         setVisibleForm(false);
-        setUserSelected(initialUserform);
+        setUserSelected(initialUserForm);
     }
     return {
         users, 
         userSelected,
-        initialUserform,
+        initialUserForm,
         visibleForm,
         
         handlerAddUser,
