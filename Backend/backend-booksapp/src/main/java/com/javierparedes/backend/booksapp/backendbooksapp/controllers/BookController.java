@@ -17,7 +17,7 @@ import com.javierparedes.backend.booksapp.backendbooksapp.models.entities.Book;
 import com.javierparedes.backend.booksapp.backendbooksapp.services.BookService;
 
 @RestController
-@RequestMapping("/libros")
+@RequestMapping("/books")
 public class BookController {
     
     @Autowired

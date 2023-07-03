@@ -16,6 +16,8 @@ export const UserForm = ({userSelected, handlerCloseForm}) => {
 
     const onInputChange = ({target}) => {
         const { name, value } = target;
+
+        console.log(target.name)
         setUserForm({
             ...userForm,
             [name]: value
@@ -24,7 +26,7 @@ export const UserForm = ({userSelected, handlerCloseForm}) => {
 
     const onSubmit =(event) =>{
         event.preventDefault();
-        if(!name || !surname || !alias || (!password && id === 0) || !email || !address || !rol){
+        if(!name || !surname || !alias || (!password && id === 0) || !email || !address ){
              
             Swal.fire(
                 'Error de validación',
@@ -82,9 +84,9 @@ export const UserForm = ({userSelected, handlerCloseForm}) => {
             onChange={onInputChange} />
 
             <select className="form-select my-3 w-75" aria-label="Rol"
-             onChange={onInputChange} >
-            <option value="1">USER</option>
-            <option value="2">ADMIN</option>
+                name="rol" onChange={onInputChange}>
+            <option value="USER">USER</option>
+            <option value="ADMIN">ADMIN</option>
             </select>
 
             <input type="hidden"
@@ -101,7 +103,7 @@ export const UserForm = ({userSelected, handlerCloseForm}) => {
                 <button
                     className="btn btn-primary mx-2"
                     type="button"
-                    onClick={() => OnCloseForm}>
+                    onClick={() => onCloseForm()}>
                         Cerrar
                 </button>
             }

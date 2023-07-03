@@ -4,7 +4,8 @@ import { UserContext } from "../context/UserContext"
 export const UserRow = ({id, name, surname, alias, email, address, rol}) => {
     const { handlerUserSelected, handlerRemoveUser} = useContext(UserContext);
     return (
-        <tr>
+        <tr>    
+                                <td>{ id }</td>
                                 <td>{ name }</td>
                                 <td>{ surname }</td>
                                 <td>{ alias }</td>
@@ -14,6 +15,7 @@ export const UserRow = ({id, name, surname, alias, email, address, rol}) => {
                                 <td>
                                     <button type="button" className="btn btn-secondary btn-sm"
                                     onClick={()=> handlerUserSelected({
+                                        id,
                                         name,
                                         surname,
                                         alias,

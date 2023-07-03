@@ -38,7 +38,7 @@ export const LoginPage = () => {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">Login Usuario</h5>
+                        <h5 className="modal-title">Login Users</h5>
                     </div>
                     <form onSubmit={ onSubmit }>
                         <div className="modal-body">

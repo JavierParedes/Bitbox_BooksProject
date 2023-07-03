@@ -19,7 +19,7 @@ import com.javierparedes.backend.booksapp.backendbooksapp.models.entities.PriceR
 import com.javierparedes.backend.booksapp.backendbooksapp.services.PriceReductionService;
 
 @RestController
-@RequestMapping("/descuentos")
+@RequestMapping("/prices")
 public class PriceReductionController {
 
     @Autowired

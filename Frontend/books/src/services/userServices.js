@@ -30,7 +30,7 @@ export const save = async ({name, surname, alias, password, email, address, rol}
 }
 
 
-export const update = async ({name, surname, alias, email, address, rol}) => {
+export const update = async ({id, name, surname, alias, email, address, rol}) => {
  try {
     return await axios.put(`${BASE_URL}/${id}`,{
         name,

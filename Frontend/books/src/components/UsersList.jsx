@@ -10,6 +10,7 @@ export const UsersList = ({}) => {
             <table className="table table-hover table-striped">
                 <thead>
                     <tr>
+                        <th>id</th>
                         <th>name</th>
                         <th>surname</th>
                         <th>alias</th>

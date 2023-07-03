@@ -18,7 +18,7 @@ import com.javierparedes.backend.booksapp.backendbooksapp.models.entities.Suppli
 import com.javierparedes.backend.booksapp.backendbooksapp.services.SupplierService;
 
 @RestController
-@RequestMapping("/proveedores")
+@RequestMapping("/suppliers")
 public class SupplierController {
      @Autowired
     private SupplierService service;

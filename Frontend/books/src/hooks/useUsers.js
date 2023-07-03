@@ -2,7 +2,7 @@ import { useReducer, useState } from "react";
 import { usersReducer } from "../reducers/usersReducer";
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
-import { findAll, remove, save } from "../services/userServices";
+import { findAll, remove, save, update } from "../services/userServices";
 
 const initialUsers = [];
 
@@ -14,7 +14,7 @@ const initialUserForm = {
     password:'',
     email:'',
     address:'',
-    rol:'',
+    rol:'USER',
 }
 
 export const useUsers = () => {
@@ -89,7 +89,7 @@ export const useUsers = () => {
 
     const handlerUserSelected = (user) => {
         setVisibleForm(true);
-        setUserSelected({...user});
+        setUserSelected({ ...user });
       
     }
     
@@ -106,7 +106,6 @@ export const useUsers = () => {
         userSelected,
         initialUserForm,
         visibleForm,
-        
         handlerAddUser,
         handlerUserSelected,
         handlerRemoveUser,
