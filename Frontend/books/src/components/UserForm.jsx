@@ -29,19 +29,12 @@ export const UserForm = ({userSelected, handlerCloseForm}) => {
         if(!name || !surname || !alias || (!password && id === 0) || !email || !address ){
              
             Swal.fire(
-                'Error de validación',
-                'Debe completar todos los campos del formulario',
+                'Validation error',
+                'You must complete all the fields of the form',
                 'Error'
             )
         }
-        if(!email.includes('@')){
-            Swal.fire(
-                'Error de validación de email',
-                'El email debe de ser valido',
-                'Error'
-            )
-        }
-
+    
         handlerAddUser(userForm);
     }
 
@@ -96,7 +89,7 @@ export const UserForm = ({userSelected, handlerCloseForm}) => {
             <button 
                 className="btn btn-primary"
                 type="submit">
-                    {id>0? 'Editar' : 'Crear'}
+                    {id>0? 'Edit' : 'Create'}
             </button>
 
             { !handlerCloseForm ||
@@ -104,7 +97,7 @@ export const UserForm = ({userSelected, handlerCloseForm}) => {
                     className="btn btn-primary mx-2"
                     type="button"
                     onClick={() => onCloseForm()}>
-                        Cerrar
+                        Close
                 </button>
             }
         </form>

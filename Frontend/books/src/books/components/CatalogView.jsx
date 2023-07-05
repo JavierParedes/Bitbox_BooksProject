@@ -1,35 +1,33 @@
-import { useEffect, useState } from "react";
-import { findAllBooks } from "../services/bookServices";
-import { CatalogItem } from "./CatalogItem";
+import { useContext} from "react"
+import { CatalogItem } from "./CatalogItem"
+import { BookContext } from "../context/BookContext"
 
 
-export const CatalogView = ( ) => {
+export const CatalogView = ({}) => {
 
-    const [books, setBooks] = useState([]);
-    useEffect(
-        () => {
-            setBooks(findAllBooks());
-        }, []
-    )
+    const {books} = useContext(BookContext);
 
     return (
         <>
             <div className="container">
-                <h3>Books</h3>
                 <div className="row">
-                    {books.map(book => (
-                        <div className="col-4 my-2" key={book.id} >
+                        {books.map(({id, itemCode, name, description,author, gender, price, priceReductionBooks,state,supplier,creationDate,creatorUser}) => (
                             <CatalogItem 
-                                name={book.name} 
-                                description={book.description} 
-                                itemCode={book.itemCode} 
-                                author={book.author} 
-                                gender={book.gender} 
-                                price={book.price} 
+                                    key={id}
+                                    id={id}
+                                    itemCode={itemCode}
+                                    name={name} 
+                                    description={description} 
+                                    author={author} 
+                                    gender={gender} 
+                                    price={price} 
+                                    priceReductionBooks={priceReductionBooks}
+                                    state={state}
+                                    supplier={supplier}
+                                    creationDate={creationDate}
+                                    creatorUser={creatorUser}
                             />
-                        </div>
-                    ))}
-
+                        ))}
                 </div>
             </div>
         </>

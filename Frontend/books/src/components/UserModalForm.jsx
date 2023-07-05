@@ -12,7 +12,7 @@ export const UserModalForm = ( ) => {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title">
-                                    {userSelected.id > 0? 'Editar':'Crear'} Usuarios
+                                    {userSelected.id > 0? 'Editar':'Crear'} Users
                                 </h5>
                             </div>
                             <div className="modal-body">

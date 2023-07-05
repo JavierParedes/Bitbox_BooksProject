@@ -50,11 +50,11 @@ export const useUsers = () => {
         
         Swal.fire(
             (user.id ===0) ? 
-            'Usuario Creado' : 
-            'Usuario Modificado',
+            'User Created' : 
+            'Modified User',
             (user.id ===0) ? 
-            'El usuario ha sido creado con exito' :
-            'El usuario ha sido actualizado con exito',
+            'The user has been created successfully' :
+            'The user has been successfully updated',
             'Success'
         ); 
         handlerCloseForm();
@@ -63,13 +63,13 @@ export const useUsers = () => {
 
     const handlerRemoveUser = (id) => {
         Swal.fire({
-            title: 'Esta seguro que desea eliminar?',
-            text: "Cuidado el usuario sera eliminado!",
+            title: 'Are you sure you want to delete?',
+            text: "Beware the user will be deleted!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, eliminar!'
+            confirmButtonText: 'Yes, eliminate!'
           }).then((result) => {
             if (result.isConfirmed) {
                 remove(id);
@@ -79,8 +79,8 @@ export const useUsers = () => {
                 })  
 
               Swal.fire(
-                'Usuario Eliminado!',
-                'El usuario ha sido eliminado con exito.',
+                'User Deleted!',
+                'The user has been successfully deleted.',
                 'success'
               )
             }
